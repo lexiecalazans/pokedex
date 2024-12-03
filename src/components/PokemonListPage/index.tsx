@@ -265,7 +265,7 @@ const PokemonList = () => {
             )}
           </PokemonListContainer>
 
-          {!loading && hasMore && (
+          {!loading && hasMore && search.trim() === "" ? (
             <ContentWrapper>
               <Button
                 type="button"
@@ -283,6 +283,14 @@ const PokemonList = () => {
                 Próxima
               </Button>
             </ContentWrapper>
+          ) : (
+            pokemonList !== allPokemonList && (
+              <ContentWrapper>
+                <Button onClick={handleClearSearch}>
+                  Voltar para a Pokédex
+                </Button>
+              </ContentWrapper>
+            )
           )}
         </div>
       </Container>
