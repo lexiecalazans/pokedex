@@ -21,6 +21,7 @@ const StyledLink = styled.button`
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
+  cursor: pointer;
 
   &:hover {
     color: #0070f3;
