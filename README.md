@@ -1,50 +1,75 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Pokémon Project
 
-Currently, two official plugins are available:
+Um projeto simples de Pokédex que permite visualizar uma lista de Pokémons, ver detalhes sobre cada um e adicionar/remover Pokémons dos favoritos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **React**: Para construção da interface de usuário.
+- **React Router DOM**: Para navegação entre páginas.
+- **Styled Components**: Para estilização da aplicação.
+- **Vite**: Ferramenta de build rápida e moderna.
+- **Vitest**: Para testes unitários.
+- **Axios**: Para fazer requisições à API.
+- **ESLint**: Para manter a qualidade do código.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalação
 
-- Configure the top-level `parserOptions` property like this:
+Clone este repositório e instale as dependências utilizando o npm ou yarn:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/lexiecalazans/pokedex.git
+cd pokedex
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Ou, se preferir, usando Yarn:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+git clone https://github.com/lexiecalazans/pokedex.git
+cd pokedex
+yarn install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Rodando o Projeto
+
+Após instalar as dependências, você pode rodar o projeto no modo de desenvolvimento com o seguinte comando:
+
+```bash
+npm run dev
+```
+
+Isso iniciará o servidor de desenvolvimento, e você poderá acessar o projeto em `http://localhost:5173`.
+
+## Funcionalidades
+
+- **Listagem de Pokémons**: Exibe uma lista de Pokémons com nome, imagem e informações básicas.
+- **Favoritos**: Permite adicionar e remover Pokémons dos favoritos. A lista de favoritos é salva no armazenamento local do navegador.
+
+## Estrutura do Projeto
+
+```bash
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── PokemonCard.tsx
+│   ├── PokemonListPage.tsx
+│   └── PokemonFavoritesPage.tsx
+├── utils/
+│   ├── localStorage.ts
+│   ├── mocks.ts
+│   ├── pokemontypes.ts
+│   └── types.ts
+├── App.tsx
+├── index.tsx
+├── vite.config.ts
+└── vitest.config.ts
+```
+
+## Testes
+
+Os testes do projeto são realizados com **Vitest** e podem ser executados com o comando:
+
+```bash
+npm run test
 ```
