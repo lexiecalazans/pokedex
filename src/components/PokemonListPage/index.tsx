@@ -246,7 +246,7 @@ const PokemonList = () => {
           <PokemonListContainer>
             {loading ? (
               <>
-                <SkeletonCard />
+                <SkeletonCard className="skeleton-loader" />
                 <SkeletonCard />
                 <SkeletonCard />
               </>

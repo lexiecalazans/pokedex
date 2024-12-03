@@ -49,8 +49,10 @@ describe("PokemonList Component", () => {
     const selectType = screen.getByRole("combobox");
     fireEvent.change(selectType, { target: { value: "fire" } });
 
-    const charmander = screen.getByText("Charmander");
-    expect(charmander).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText("Charmander")).toBeInTheDocument();
+    });
+
     expect(screen.queryByText("Pikachu")).not.toBeInTheDocument();
     expect(screen.queryByText("Bulbasaur")).not.toBeInTheDocument();
   });
@@ -87,12 +89,14 @@ describe("PokemonList Component", () => {
     }
   });
 
-  it("should show loading state while fetching data", async () => {
+  it("should show loading skeleton while fetching data", async () => {
     render(<PokemonList />);
 
-    expect(screen.getByText(/carregando/i)).toBeInTheDocument();
+    const skeletonLoader = document.querySelector(".skeleton-loader");
+    expect(skeletonLoader).toBeInTheDocument();
 
     await waitFor(() => expect(getPokemonList).toHaveBeenCalled());
+    expect(document.querySelector(".skeleton-loader")).not.toBeInTheDocument();
 
     const pikachu = screen.getByText("Pikachu");
     expect(pikachu).toBeInTheDocument();
